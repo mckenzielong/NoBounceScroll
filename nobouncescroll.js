@@ -5,32 +5,30 @@ NoBounceScroll = function (eleName) {
     var ele = document.getElementById(eleName);
 
     if (typeof ele !== "undefined") {
-        bind();
+        enable();
     } else {
         console.log("Unable to setup NoBounceScroll");
     }
 
     function handleScroll(evt) {
         if (evt.target.scrollTop <= 1 || evt.target.scrollTop > evt.target.clientHeight) {
-            evt.stopPropagation();
             evt.stopImmediatePropagation();
-            evt.preventDefault();
-            return false;
+            return;
         }
     }
 
-    function unbind() {
+    function disable() {
         ele.removeEventListener('scroll', handleScroll, false);
     }
 
-    function bind() {
+    function enable() {
         ele.addEventListener('scroll', handleScroll, false);
     }
 
     return {
         version : version,
-        bind : bind,
-        unbind : unbind
+        enable : enable,
+        disable : disable
     };
 };
 })();
