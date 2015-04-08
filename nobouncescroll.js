@@ -11,7 +11,8 @@ NoBounceScroll = function (eleName) {
     }
 
     function handleScroll(evt) {
-        if (evt.target.scrollTop <= 1 || evt.target.scrollTop > evt.target.clientHeight) {
+        if (evt.target.scrollTop <= 1 ||
+            evt.target.scrollTop + evt.target.clientHeight >= evt.target.scrollHeight ) {
             evt.stopImmediatePropagation();
             return;
         }
